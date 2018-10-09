@@ -87,3 +87,12 @@ speller:
     - xform/H$/5/            # 陽入
     # 去除聲調
     - abbrev/^([A-Za-z]+)\d+$/$1/
+
+translator:
+  dictionary: xi_hoi_rhim
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
