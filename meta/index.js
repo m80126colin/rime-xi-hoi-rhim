@@ -19,7 +19,7 @@ const title   = [
   'version: "2018.10.09"',
   'sort: by_weight',
   'use_preset_vocabulary: false',
-  '---'
+  '...'
 ]
 
 const promises = [
