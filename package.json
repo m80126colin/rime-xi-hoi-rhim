@@ -1,0 +1,26 @@
+{
+  "name": "rime-xi-hoi-rhim",
+  "version": "0.0.1",
+  "description": "",
+  "main": "meta/index.js",
+  "scripts": {
+    "build": "node meta/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m80126colin/rime-xi-hoi-rhim.git"
+  },
+  "keywords": [
+    "hakka"
+  ],
+  "author": "Hsu Karinsu <m80126colin@gmail.com>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/m80126colin/rime-xi-hoi-rhim/issues"
+  },
+  "homepage": "https://github.com/m80126colin/rime-xi-hoi-rhim#readme",
+  "dependencies": {
+    "bluebird": "^3.5.2",
+    "lodash": "^4.17.11"
+  }
+}

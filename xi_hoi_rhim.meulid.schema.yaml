@@ -1,0 +1,89 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: xi_hoi_rhim
+  name: 四海音（四縣・苗栗）
+  version: "0.1"
+  author:
+    - Hsu Karinsu <m80126colin@gmail.com>
+  description: |
+    臺灣四縣話、海陸話拼音方案，採教育部客家話拼音方案。
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+menu:
+  alternative_select_keys: "ABCDEFGHIJ"
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz12345
+  delimiter: " '"
+  algebra:
+    # - erase/^xx$/
+    # 對應韻變
+    - xform/^([pfmv])ui/$1i/ # 脣音、脣齒音簡化
+    - xform/^ləu/leu/        # ləu 特殊轉換
+    - xform/əu/eu/           # əu 一般轉換
+    - xform/iə/ie/           # ə 細音後韻變
+    - xform/^zi/ji/          # 顎音化
+    - xform/^ci/qi/          # 顎音化
+    - xform/^si/xi/          # 顎音化
+    - xform/^([zcs])ɨ/$1ii/  # 四海空韻通則
+    - xform/^([zcs])h/$1/    # 四縣無齦後音
+    - xform/ɨ/ii/            # ɨ 空韻一般轉換
+    - xform/j//              # j 一般轉換
+    - xform/^ʒ([^i])/i$1/    # ʒ 韻變
+    - xform/^ʒ//             # ʒ 一般轉換
+    # 符號轉換
+    - xform/ŋ/ng/            # ŋ → ng
+    - xform/^p[^h]/B/        # p → b
+    - xform/^t[^h]/D/        # t → d 
+    - xform/^k[^h]/G/        # k → g
+    - xform/p$/B/
+    - xform/t$/D/
+    - xform/k$/G/
+    - xform/^([ptk])h/$1/
+    - xlit/BDG/bdg/
+    # 聲調轉換
+    - xlit/1235678/ABCEFGH/  # 聲調映射
+    - xform/A$/24/           # 陰平
+    - xform/B$/11/           # 陽平
+    - xform/C$/31/           # 上聲
+    - xform/[EF]$/55/        # 四縣無分陰陽去
+    - xform/G$/2/            # 陰入
+    - xform/H$/5/            # 陽入
+    # 去除聲調
+    - abbrev/^([A-Za-z]+)\d+$/$1/
