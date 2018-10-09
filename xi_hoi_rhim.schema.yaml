@@ -38,6 +38,8 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
+    - echo_translator
+    - table_translator
     - punct_translator
     - reverse_lookup_translator
     - script_translator
@@ -72,9 +74,9 @@ speller:
     - xform/^p[^h]/B/        # p → b
     - xform/^t[^h]/D/        # t → d 
     - xform/^k[^h]/G/        # k → g
-    - xform/p$/B/
-    - xform/t$/D/
-    - xform/k$/G/
+    - xform/p(\d+)$/B$1/
+    - xform/t(\d+)$/D$1/
+    - xform/k(\d+)$/G$1/
     - xform/^([ptk])h/$1/
     - xlit/BDG/bdg/
     # 聲調轉換
@@ -85,8 +87,8 @@ speller:
     - xform/[EF]$/55/        # 四縣無分陰陽去
     - xform/G$/2/            # 陰入
     - xform/H$/5/            # 陽入
-    # 去除聲調
-    - abbrev/^([A-Za-z]+)\d+$/$1/
+    # 糢糊性
+    - abbrev/^([A-Za-z]+)\d+$/$1/ # 去除聲調
 
 translator:
   dictionary: xi_hoi_rhim
