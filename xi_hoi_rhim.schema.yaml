@@ -4,7 +4,7 @@
 schema:
   schema_id: xi_hoi_rhim
   name: 四海音（四縣・苗栗）
-  version: "0.1"
+  version: "0.2"
   author:
     - Hsu Karinsu <m80126colin@gmail.com>
   description: |
@@ -57,16 +57,22 @@ speller:
     # - erase/^xx$/
     # 對應韻變
     - xform/^([pfmv])ui/$1i/ # 脣音、脣齒音簡化
+    # 對應韻變 - j 轉換
+    - xform/([kŋ])j/$1i/     # 特殊轉換 - 四海混同
+    - xform/j//              # j 一般轉換
+    # 對應韻變 - ə 轉換
     - xform/^ləu/leu/        # ləu 特殊轉換
     - xform/əu/eu/           # əu 一般轉換
     - xform/iə/ie/           # ə 細音後韻變
+    # 對應韻變 - 顎音化
     - xform/^zi/ji/          # 顎音化
     - xform/^ci/qi/          # 顎音化
     - xform/^si/xi/          # 顎音化
+    # 對應韻變 - 空韻
     - xform/^([zcs])ɨ/$1ii/  # 四海空韻通則
     - xform/^([zcs])h/$1/    # 四縣無齦後音
     - xform/ɨ/ii/            # ɨ 空韻一般轉換
-    - xform/j//              # j 一般轉換
+    # 對應韻變 - ʒ
     - xform/^ʒ([^i])/i$1/    # ʒ 韻變
     - xform/^ʒ//             # ʒ 一般轉換
     # 符號轉換
