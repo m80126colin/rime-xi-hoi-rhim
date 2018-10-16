@@ -77,9 +77,9 @@ speller:
     - xform/^ʒ//             # ʒ 一般轉換
     # 符號轉換
     - xform/ŋ/ng/            # ŋ → ng
-    - xform/^p[^h]/B/        # p → b
-    - xform/^t[^h]/D/        # t → d 
-    - xform/^k[^h]/G/        # k → g
+    - xform/^p([^h])/B$1/    # p → b
+    - xform/^t([^h])/D$1/    # t → d 
+    - xform/^k([^h])/G$1/    # k → g
     - xform/p(\d+)$/B$1/
     - xform/t(\d+)$/D$1/
     - xform/k(\d+)$/G$1/
